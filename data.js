@@ -73,3 +73,9 @@ const strnum = '1'
 console.log(numnum == strnum) // true
 // 일치 연산자의 경우 각 데이터의 타입을 바꾸면서 비교하지 않는다.
 console.log(numnum === strnum) // false
+
+// 특수 데이터 타입 비교
+console.log([].constructor === Array)
+console.log({}.constructor === Object)
+console.log(Object.prototype.toString.call(null).slice(8, -1) === 'Null')
+
