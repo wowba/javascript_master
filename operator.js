@@ -48,3 +48,47 @@ console.log(els)
 const unknown = undefined
 // console.log(unknown.name) // error
 console.log(unknown?.name) //undefined
+
+// switch 문
+function setPrice(fruit) {
+    switch(fruit) {
+        case "apple":
+            return 1000
+        case "banana":
+            return 2000
+        default:
+            return 0
+    }
+}
+console.log(setPrice("banana"))
+
+// for of 반복문
+const animals = ["lion", "tiger", "bird"]
+for (const animal of animals) {
+    console.log(animal)
+}
+// for in 반복문
+const lee = {
+    name: "lee",
+    age: 12,
+    sex: "male"
+}
+for (const key in lee) {
+    console.log(key)
+    console.log(lee[key])
+}
+
+// while 반복문
+let i = 0;
+while (i < 5) {
+    console.log(i)
+    i++
+}
+
+// do while 반복문 
+// 조건이 거짓이여도 최초 1회 실행한다.
+let n = 0
+do {
+    console.log(n)
+    n += 1
+} while (n < 4)
