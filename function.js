@@ -88,4 +88,47 @@ const c = (c) => {
 }
 c(value => {console.log(value)})
 
-// 재귀
+// 재귀, 함수 내부에서 자기 자신을 다시 호출
+let j = 0;
+const recursive = () => {
+  console.log("hello")
+  j += 1
+  if(j < 4) {
+    recursive()
+  }
+}
+recursive()
+
+// 호출 스케쥴링
+const hello = () => {
+    console.log("hello")
+}
+const timeout = setTimeout(hello, 2000)
+const interval = setInterval(hello, 2000)
+const h1E1 = document.querySelector('h1')
+h1E1.addEventListener('click', () => {
+    clearTimeout(timeout) // clearTimeout을 이용해 타이머 제거
+    clearInterval(interval) // clearIvterval을 이용해 인터벌 제거
+})
+
+// this
+//// 일반 함수의 this는 호출 위치에서 정의
+//// 화살표 함수의 this는 자신이 선언된 함수 범위에서 정의
+function thisUser () {
+    this.firstName = "lee" // arrow
+    this.lastName = "park" // arrow
+    return {
+        firstName: "kim", // function
+        lastName: "yang", // function
+        age: 12,
+        getArrowName: () => {
+            return `${this.firstName} ${this.lastName}`
+        },
+        getFunctionName: function () { // ": function" 은 생략 가능하다
+            return `${this.firstName} ${this.lastName}`
+        }
+    }
+}
+const u = thisUser()
+console.log(u.getArrowName())
+console.log(u.getFunctionName())
