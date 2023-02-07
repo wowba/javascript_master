@@ -32,7 +32,7 @@ const c = () => {
 // Promise
 //// 콜백지옥 패턴에 비해서 훨씬 더 간단하게 코드를 작성할 수 있다.
 const d = () => {
-  return new Promise(resolve => {
+  return new Promise(resolve => { // resolve는 함수의 인자로 들어오는 함수 데이터를 의미한다.
     setTimeout(() => {
       console.log("d")
       resolve()
@@ -81,3 +81,37 @@ const wrap = async () => {
   await f()
 }
 wrap()
+
+// resolve, reject, 에러핸들링
+//// resolve reject 중 둘 중 하나가 먼저 동작한 경우 나머지 하나는 동작하지 않는다.
+const delayAdd = index => {
+  return new Promise ((resolve, reject) => {
+    setTimeout(() => {
+      if (index > 10) {
+        reject(`${index}는 10보다 클 수 없습니다.`) 
+        return
+      }
+      console.log(index)
+      resolve(index + 1)
+    }, 1000)
+  })
+}
+
+delayAdd(9)
+  .then(res => console.log(res)) // resolve에 들어감
+  .catch(err => console.error(err)) // reject에 들어감
+  .finally(() => {console.log("done")})
+
+// async await에서는 try catch 구문을 이용하여 에러핸들링이 가능하다.
+//// await 키워드 뒤의 함수는 promise 인스턴스를 반환하기에 에러발생시 바로 catch 구문으로 넘어간다.
+const delayAddWrap = async () => {
+  try {
+    const res = await delayAdd(12)
+    console.log(res)
+  } catch (err) {
+    console.error(err)
+  } finally {
+    console.log("done")
+  }
+}
+delayAddWrap()
