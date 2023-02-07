@@ -115,3 +115,7 @@ const delayAddWrap = async () => {
   }
 }
 delayAddWrap()
+
+// fetch(주소, 옵션)
+//// 네트워크를 통해 리소스의 요청 및 응답을 처리할 수 있음
+//// Promise 인스턴스를 반환함.
