@@ -79,3 +79,26 @@ console.log([].constructor === Array)
 console.log({}.constructor === Object)
 console.log(Object.prototype.toString.call(null).slice(8, -1) === 'Null')
 
+// 심볼(symbol)
+//// 변경이 불가한 데이터로, 유일한 식별자를 만들어 데이터를 보호하는 용도로 사용 가능
+//// 심볼 데이터를 가진 변수를 사용하지 않으면 확인할 수 없다.
+
+// Symbol(`설명`)
+//// 설명은 단순 디버깅을 위한 용도이며 심볼 값과는 관계 없음
+const sKey = Symbol('hello')
+const sUser = {
+    key: `일반 정보`,
+    sKey: `비밀 정보`
+}
+console.log(sUser.key)
+console.log(sUser.sKey)
+console.log(sKey)
+
+// 빅인트 BigInt
+//// 빅인트는 길이 제한이 없는 정수. 숫자 데이터를 안정적으로 표현 가능.
+//// 정수 뒤에 n을 붙이거나 BigInt()를 호출해 생성
+
+// 불변성과 가변성
+//// 불변성 : 생성된 데이터가 메모리에서 변경되지 않는것
+//// 가변성 : 생성된 데이터가 메모리에서 변경될 수 있음을 의미
+//// 자바스크립트의 원시형 데이터는 불변성, 참조형은 가변성을 지님.
