@@ -1,4 +1,3 @@
-
 // 함수 호이스팅
 // 함수 선언부가 유효범위 최상단으로 끌어올려지는 현상 의미.
 
@@ -132,3 +131,20 @@ function thisUser () {
 const u = thisUser()
 console.log(u.getArrowName())
 console.log(u.getFunctionName())
+
+// 클로저
+//// 함수가 선언될 때 유효범위를 기억하고 있다가
+//// 함수가 외부에서 호출될 때 그 유효범위의 특정 변수를 참조할 수 있는 개념
+//// 외부에서 상태 관리를 하지 않아도 되는 장점이 존재한다.
+
+function createCount() {
+    let a = 0
+    return function () {
+        return a += 1
+    }
+}
+
+const count = createCount()
+
+console.log(count()) // 1
+console.log(count()) // 2
